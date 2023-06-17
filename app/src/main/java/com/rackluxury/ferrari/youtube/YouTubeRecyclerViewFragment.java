@@ -19,9 +19,8 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.PlaylistListResponse;
 import com.google.api.services.youtube.model.Video;
-import com.rackluxury.ferrari.BuildConfig;
 import com.rackluxury.ferrari.R;
-import com.rackluxury.ferrari.youtube.model.PlaylistVideos;
+import com.rackluxury.ferrari.youferraritube.model.PlaylistVideos;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -105,7 +104,7 @@ public class YouTubeRecyclerViewFragment extends Fragment {
                     mProgressDialog.show();
                 }
             }
-            
+
             @Override
             protected void onPostExecute(PlaylistListResponse playlistListResponse) {
                 // if we didn't receive a response for the playlist titles, then there's nothing to update
@@ -133,7 +132,7 @@ public class YouTubeRecyclerViewFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.youtube_recycler_view_fragment, container, false);
 
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.youtube_recycler_view);
+        mRecyclerView = rootView.findViewById(R.id.youtube_recycler_view);
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
         mRecyclerView.setHasFixedSize(true);
@@ -150,7 +149,7 @@ public class YouTubeRecyclerViewFragment extends Fragment {
 
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mPlaylistSpinner = (Spinner)rootView.findViewById(R.id.youtube_playlist_spinner);
+        mPlaylistSpinner = rootView.findViewById(R.id.youtube_playlist_spinner);
 
         return rootView;
     }
@@ -226,7 +225,7 @@ public class YouTubeRecyclerViewFragment extends Fragment {
         // create the adapter with our playlistVideos and a callback to handle when we reached the last item
         mPlaylistCardAdapter = new PlaylistCardAdapter(playlistVideos, new LastItemReachedListener() {
             @Override
-            public void onLastItem(int position, String nextPageToken) {
+            public void onLastItem() {
                 new com.rackluxury.ferrari.youtube.GetPlaylistAsyncTask(mYouTubeDataApi) {
                     @Override
                     public void onPostExecute(Pair<String, List<Video>> result) {
@@ -245,12 +244,12 @@ public class YouTubeRecyclerViewFragment extends Fragment {
         playlistVideos.addAll(result.second);
         mPlaylistCardAdapter.notifyItemRangeInserted(positionStart, result.second.size());
     }
-    
+
 
     /**
      * Interface used by the {@link PlaylistCardAdapter} to inform us that we reached the last item in the list.
      */
     public interface LastItemReachedListener {
-        void onLastItem(int position, String nextPageToken);
+        void onLastItem();
     }
 }
