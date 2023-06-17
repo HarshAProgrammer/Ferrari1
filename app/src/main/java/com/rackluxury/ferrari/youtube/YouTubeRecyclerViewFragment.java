@@ -19,8 +19,9 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 import com.google.api.services.youtube.YouTube;
 import com.google.api.services.youtube.model.PlaylistListResponse;
 import com.google.api.services.youtube.model.Video;
+import com.rackluxury.ferrari.BuildConfig;
 import com.rackluxury.ferrari.R;
-import com.rackluxury.ferrari.youferraritube.model.PlaylistVideos;
+import com.rackluxury.ferrari.youtube.model.PlaylistVideos;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
