@@ -20,7 +20,7 @@
             <ImageView
                 android:id="@+id/image_item_redeem"
                 android:src="@drawable/splashscreen"
-                android:scaleType="centerCrop"
+                android:scaleType="center"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:contentDescription="@string/redeem_image_redeems" />

@@ -14,7 +14,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
-
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbarImagesActivity"
             android:layout_width="match_parent"
@@ -88,13 +87,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         app:SpinKit_Color="@color/colorAccent" />
-
     <com.facebook.shimmer.ShimmerFrameLayout
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:id="@+id/sflImages"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvImages"

@@ -66,7 +66,6 @@ import com.rackluxury.ferrari.blog.BlogActivity;
 import com.rackluxury.ferrari.blog.BlogCheckerActivity;
 import com.rackluxury.ferrari.facts.FactsActivity;
 import com.rackluxury.ferrari.images.ImagesActivity;
-import com.rackluxury.ferrari.reddit.activities.RedditMainActivity;
 import com.rackluxury.ferrari.video.VideoActivity;
 import com.rackluxury.ferrari.video.VideoCheckerActivity;
 import com.rackluxury.ferrari.youtube.YouTubeActivity;
@@ -504,10 +503,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.blogNavigation) {
             Blog();
 
-        } else if (id == R.id.redditNavigation) {
-            Reddit();
-
-        } else if (id == R.id.profileNavigation) {
+        }else if (id == R.id.profileNavigation) {
             ProfileDisplay();
 
         } else if (id == R.id.billingNavigation) {

@@ -99,8 +99,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:src="@drawable/ic_reaction_heart"
-                android:contentDescription="TODO" />
+                android:src="@drawable/ic_reaction_heart"/>
 
             <ImageView
                 android:id="@+id/ivExpDetailReactHappy"
@@ -108,8 +107,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:src="@drawable/ic_reaction_happy"
-                android:contentDescription="TODO" />
+                android:src="@drawable/ic_reaction_happy"/>
 
             <ImageView
                 android:id="@+id/ivExpDetailReactLove"
@@ -117,8 +115,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:src="@drawable/ic_reaction_love"
-                android:contentDescription="TODO" />
+                android:src="@drawable/ic_reaction_love"/>
 
             <ImageView
                 android:id="@+id/ivExpDetailReactSad"
@@ -126,8 +123,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:src="@drawable/ic_reaction_sad"
-                android:contentDescription="TODO" />
+                android:src="@drawable/ic_reaction_sad"/>
 
             <ImageView
                 android:id="@+id/ivExpDetailReactShocked"
@@ -135,8 +131,7 @@
                 android:layout_height="40dp"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:src="@drawable/ic_reaction_shocked"
-                android:contentDescription="TODO" />
+                android:src="@drawable/ic_reaction_shocked"/>
 
 
         </LinearLayout>
@@ -155,7 +150,7 @@
         android:src="@drawable/ic_heart_white"
         app:layout_constraintBottom_toTopOf="@+id/linLayExpensiveDetail1"
         app:layout_constraintStart_toStartOf="parent"
-        app:tint="@color/colorLightRed" />
+        app:tint="@color/colorRed" />
 
     <LinearLayout
         android:id="@+id/linLayExpensiveDetail1"
@@ -172,7 +167,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="32dp"
-            android:text="@string/car_name_categories_detail"
+            android:text="@string/watch_name_categories_detail"
             android:textAlignment="center"
             android:textColor="@android:color/background_dark"
             android:textSize="12sp" />

@@ -23,12 +23,11 @@
         android:paddingBottom="8dp">
 
         <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/profile_image"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_gravity="center"
             android:src="@drawable/widget_icon"
-            app:civ_border_color="@color/colorLightRed"
+            app:civ_border_color="@color/colorRed"
             app:civ_border_width="2dp" />
 
         <TextView
@@ -67,24 +66,21 @@
             android:layout_height="20dp"
             android:layout_gravity="center"
             android:layout_margin="8dp"
-            android:src="@drawable/ic_action_like_border"
-            android:contentDescription="TODO" />
+            android:src="@drawable/ic_action_like_border" />
 
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_gravity="center"
             android:layout_margin="8dp"
-            android:src="@drawable/ic_action_comment_border"
-            android:contentDescription="TODO" />
+            android:src="@drawable/ic_action_comment_border" />
 
         <ImageView
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_gravity="center"
             android:layout_margin="8dp"
-            android:src="@drawable/ic_action_send_border"
-            android:contentDescription="TODO" />
+            android:src="@drawable/ic_action_send_border" />
 
         <TextView
             android:layout_width="0dp"
@@ -97,8 +93,7 @@
             android:layout_height="20dp"
             android:layout_gravity="center"
             android:layout_margin="4dp"
-            android:src="@drawable/ic_action_bookmark_border"
-            android:contentDescription="TODO" />
+            android:src="@drawable/ic_action_bookmark_border" />
 
 
     </LinearLayout>
@@ -137,7 +132,6 @@
 
 
     <TextView
-        android:id="@+id/tvDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

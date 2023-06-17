@@ -55,13 +55,15 @@ public class BlogCheckerActivity extends AppCompatActivity implements PurchasesU
     private FirebaseAuth firebaseAuth;
     private StorageReference storageReference;
     private SharedPreferences prefs;
+    private TextView people;
+    private TextView purchasesRemaining;
 
 
     private BillingClient billingClient;
     private final List<String> skulist = new ArrayList<>();
     private final String categories = "blog_checker";
     private TextView timer;
-    private String TAG = "Main";
+    private final String TAG = "Main";
     private SharedPreferences coins;
 
     @Override
@@ -69,11 +71,10 @@ public class BlogCheckerActivity extends AppCompatActivity implements PurchasesU
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blog_checker);
 
-        TextView people = findViewById(R.id.peopleNumBlogChecker);
-        TextView purchasesRemaining = findViewById(R.id.purchaseNumBlogChecker);
+        people = findViewById(R.id.peopleNumBlogChecker);
+        purchasesRemaining = findViewById(R.id.purchaseNumBlogChecker);
 
-        Random randomPurchase = new Random();
-        int valPurc = randomPurchase.nextInt(10);
+        int valPurc = 6;
         purchasesRemaining.setText(Integer.toString(valPurc));
 
         Random random = new Random();
@@ -104,7 +105,7 @@ public class BlogCheckerActivity extends AppCompatActivity implements PurchasesU
 
 
     }
-    private BroadcastReceiver broadcastReciever = new BroadcastReceiver() {
+    private final BroadcastReceiver broadcastReciever = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             updateGUI(intent);
@@ -248,7 +249,7 @@ public class BlogCheckerActivity extends AppCompatActivity implements PurchasesU
     private void handlePurchase(Purchase purchase) {
         try {
             if (purchase.getPurchaseState() == Purchase.PurchaseState.PURCHASED) {
-                if (purchase.getSku().equals(categories)) {
+                if (purchase.getProducts().equals(categories)) {
                     ConsumeParams consumeParams = ConsumeParams.newBuilder()
                             .setPurchaseToken(purchase.getPurchaseToken())
                             .build();
@@ -297,6 +298,8 @@ public class BlogCheckerActivity extends AppCompatActivity implements PurchasesU
                         @Override
                         public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
                             Toasty.success(BlogCheckerActivity.this, "Purchase Successful", Toast.LENGTH_LONG).show();
+                            int valPurc = 5;
+                            purchasesRemaining.setText(Integer.toString(valPurc));
                             int coinCount = Integer.parseInt(coins.getString("Coins", "0"));
                             coinCount = coinCount + 100000;
                             SharedPreferences.Editor coinsEdit = coins.edit();

@@ -32,12 +32,12 @@ import com.rackluxury.ferrari.blog.BlogActivity;
 import com.rackluxury.ferrari.blog.BlogCheckerActivity;
 import com.rackluxury.ferrari.facts.FactsActivity;
 import com.rackluxury.ferrari.images.ImagesActivity;
-import com.rackluxury.ferrari.reddit.activities.RedditMainActivity;
 import com.rackluxury.ferrari.video.VideoActivity;
 import com.rackluxury.ferrari.video.VideoCheckerActivity;
 
 import java.util.Calendar;
 import java.util.Random;
+
 import es.dmoral.toasty.Toasty;
 
 
@@ -68,7 +68,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
         peopleOnline = findViewById(R.id.peopleNumDashboard);
 
-        Random randomOnline = new Random();
+        Random randomOnline = new Random();das
         int valOnline = randomOnline.nextInt(100000);
         peopleOnline.setText(Integer.toString(valOnline));
         setViews();
@@ -79,7 +79,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     private void setViews() {
         oneDashboard = findViewById(R.id.homeDashboard);
         twoDashboard = findViewById(R.id.dailyLoginDashboard);
-        threeDashboard = findViewById(R.id.redditDashboard);
+        threeDashboard = findViewById(R.id.profileDashboard);
         fourDashboard = findViewById(R.id.videoDashboard);
         fiveDashboard = findViewById(R.id.imagesDashboard);
         sixDashboard = findViewById(R.id.blogDashboard);
@@ -151,8 +151,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 startActivity(intent2);
                 Animatoo.animateSwipeRight(DashboardActivity.this);
                 break;
-            case R.id.redditDashboard:
-                Intent intent3 = new Intent(DashboardActivity.this, RedditMainActivity.class);
+            case R.id.profileDashboard:
+                Intent intent3 = new Intent(DashboardActivity.this, ProfileActivity.class);
                 startActivity(intent3);
                 Animatoo.animateSwipeRight(DashboardActivity.this);
                 break;

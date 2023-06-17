@@ -44,7 +44,7 @@ public class BillingActivity extends AppCompatActivity implements PurchasesUpdat
     private Button buy_btn;
     private BillingClient billingClient;
     private final List<String> skulist = new ArrayList<>();
-    private final String categories = "buy_us_a_car";
+    private final String categories = "buy_us_a_watch";
 
     public static final int SWIPE_THRESHOLD = 100;
     public static final int SWIPE_VELOCITY_THRESHOLD = 100;
@@ -74,7 +74,7 @@ public class BillingActivity extends AppCompatActivity implements PurchasesUpdat
         setSupportActionBar(toolbar);
 
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Buy us a Car");
+            getSupportActionBar().setTitle("Buy us a Watch");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
@@ -92,9 +92,7 @@ public class BillingActivity extends AppCompatActivity implements PurchasesUpdat
                     if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.USER_CANCELED) {
                         Toasty.error(BillingActivity.this, "Try Purchasing Again", Toast.LENGTH_LONG).show();
                     } else {
-                        if (billingResult.getResponseCode() == BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED) {
-                            //We recover that method by consuming a purchase so that user can buy a categories again from same account.
-                        }
+                        //We recover that method by consuming a purchase so that user can buy a categories again from same account.
                     }
                 }
             }
@@ -119,7 +117,7 @@ public class BillingActivity extends AppCompatActivity implements PurchasesUpdat
         });
         skulist.add(categories);
         final SkuDetailsParams.Builder params = SkuDetailsParams.newBuilder();
-        params.setSkusList(skulist).setType(BillingClient.SkuType.INAPP);  //Skutype.subs for Subscription
+        params.setSkusList(skulist).setType(BillingClient.SkuType.INAPP);
         buy_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -128,10 +126,10 @@ public class BillingActivity extends AppCompatActivity implements PurchasesUpdat
                     public void onSkuDetailsResponse(@NonNull BillingResult billingResult, List<SkuDetails> list) {
                         if (list != null && billingResult.getResponseCode() == BillingClient.BillingResponseCode.OK) {
                             for (final SkuDetails skuDetails : list) {
-                                String sku = skuDetails.getSku(); // your Categories id
-                                String price = skuDetails.getPrice(); // your categories price
-                                String description = skuDetails.getDescription(); // categories description
-                                //method opens Popup for billing purchase
+                                String sku = skuDetails.getSku();
+                                String price = skuDetails.getPrice();
+                                String description = skuDetails.getDescription();
+
                                 BillingFlowParams flowParams = BillingFlowParams.newBuilder()
                                         .setSkuDetails(skuDetails)
                                         .build();
@@ -148,7 +146,7 @@ public class BillingActivity extends AppCompatActivity implements PurchasesUpdat
     private void handlePurchase(Purchase purchase) {
         try {
             if (purchase.getPurchaseState() == Purchase.PurchaseState.PURCHASED) {
-                if (purchase.getSku().equals(categories)) {
+                if (purchase.getProducts().equals(categories)) {
                     ConsumeParams consumeParams = ConsumeParams.newBuilder()
                             .setPurchaseToken(purchase.getPurchaseToken())
                             .build();
@@ -159,9 +157,7 @@ public class BillingActivity extends AppCompatActivity implements PurchasesUpdat
 
                         }
                     };
-                    billingClient.consumeAsync(consumeParams, consumeResponseListener);
-                    //now you can purchase same categories again and again
-                    //Here we give coins to user.
+
 
                     LayoutInflater inflater = LayoutInflater.from(BillingActivity.this);
                     View view = inflater.inflate(R.layout.alert_dialog_purchased, null);
@@ -177,8 +173,11 @@ public class BillingActivity extends AppCompatActivity implements PurchasesUpdat
 
                         }
                     });
+                    billingClient.consumeAsync(consumeParams, consumeResponseListener);
+                    //now you can purchase same categories again and again
+                    //Here we give coins to user.
                     tv.setText(R.string.success_billing);
-                    Toasty.success(BillingActivity.this, "Thank You For The Car", Toast.LENGTH_LONG).show();
+                    Toasty.success(BillingActivity.this, "Thank You For The Watch", Toast.LENGTH_LONG).show();
                 }
             }
         } catch (Exception e) {

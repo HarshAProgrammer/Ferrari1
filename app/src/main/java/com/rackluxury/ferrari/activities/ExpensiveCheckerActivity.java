@@ -54,24 +54,26 @@ public class ExpensiveCheckerActivity extends AppCompatActivity implements Purch
     private FirebaseAuth firebaseAuth;
     private StorageReference storageReference;
     private SharedPreferences prefs;
+    private TextView people;
+    private TextView purchasesRemaining;
     private SharedPreferences coins;
 
     private BillingClient billingClient;
     private final List<String> skulist = new ArrayList<>();
     private final String categories = "expensive_checker";
     private TextView timer;
-    private String TAG = "Main";
+    private final String TAG = "Main";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expensive_checker);
 
-        TextView people = findViewById(R.id.peopleNumExpensiveChecker);
-        TextView purchasesRemaining = findViewById(R.id.purchaseNumExpensiveChecker);
+        people = findViewById(R.id.peopleNumExpensiveChecker);
+        purchasesRemaining = findViewById(R.id.purchaseNumExpensiveChecker);
 
         Random randomPurchase = new Random();
-        int valPurc = randomPurchase.nextInt(10);
+        int valPurc = 4;
         purchasesRemaining.setText(Integer.toString(valPurc));
 
         Random random = new Random();
@@ -97,7 +99,7 @@ public class ExpensiveCheckerActivity extends AppCompatActivity implements Purch
 
 
     }
-    private BroadcastReceiver broadcastReciever = new BroadcastReceiver() {
+    private final BroadcastReceiver broadcastReciever = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             updateGUI(intent);
@@ -240,7 +242,7 @@ public class ExpensiveCheckerActivity extends AppCompatActivity implements Purch
     private void handlePurchase(Purchase purchase) {
         try {
             if (purchase.getPurchaseState() == Purchase.PurchaseState.PURCHASED) {
-                if (purchase.getSku().equals(categories)) {
+                if (purchase.getProducts().equals(categories)) {
                     ConsumeParams consumeParams = ConsumeParams.newBuilder()
                             .setPurchaseToken(purchase.getPurchaseToken())
                             .build();
@@ -292,6 +294,8 @@ public class ExpensiveCheckerActivity extends AppCompatActivity implements Purch
                             coinsEdit.putString("Coins", String.valueOf(coinCount));
                             coinsEdit.apply();
                             Toasty.success(ExpensiveCheckerActivity.this, "Purchase Successful", Toast.LENGTH_LONG).show();
+                            int valPurc = 3;
+                            purchasesRemaining.setText(Integer.toString(valPurc));
 
                         }
                     });
@@ -315,7 +319,7 @@ public class ExpensiveCheckerActivity extends AppCompatActivity implements Purch
     @Override
     public void onBackPressed() {
         finish();
-        Intent openHomeFromExpensiveChecker = new Intent(ExpensiveCheckerActivity.this,HomeActivity.class);
+        Intent openHomeFromExpensiveChecker = new Intent(ExpensiveCheckerActivity.this, HomeActivity.class);
         startActivity(openHomeFromExpensiveChecker);
         Animatoo.animateSwipeLeft(ExpensiveCheckerActivity.this);
 

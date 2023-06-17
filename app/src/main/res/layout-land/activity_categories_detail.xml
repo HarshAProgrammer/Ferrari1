@@ -114,8 +114,7 @@
                     android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:src="@drawable/ic_reaction_heart"
-                    android:contentDescription="TODO" />
+                    android:src="@drawable/ic_reaction_heart" />
 
                 <ImageView
                     android:id="@+id/ivCatDetailReactHappy"
@@ -123,8 +122,7 @@
                     android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:src="@drawable/ic_reaction_happy"
-                    android:contentDescription="TODO" />
+                    android:src="@drawable/ic_reaction_happy" />
 
                 <ImageView
                     android:id="@+id/ivCatDetailReactLove"
@@ -132,8 +130,7 @@
                     android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:src="@drawable/ic_reaction_love"
-                    android:contentDescription="TODO" />
+                    android:src="@drawable/ic_reaction_love" />
 
                 <ImageView
                     android:id="@+id/ivCatDetailReactSad"
@@ -141,8 +138,7 @@
                     android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:src="@drawable/ic_reaction_sad"
-                    android:contentDescription="TODO" />
+                    android:src="@drawable/ic_reaction_sad" />
 
                 <ImageView
                     android:id="@+id/ivCatDetailReactShocked"
@@ -150,8 +146,7 @@
                     android:layout_height="40dp"
                     android:layout_gravity="center"
                     android:layout_weight="1"
-                    android:src="@drawable/ic_reaction_shocked"
-                    android:contentDescription="TODO" />
+                    android:src="@drawable/ic_reaction_shocked" />
 
 
             </LinearLayout>
@@ -170,7 +165,7 @@
             android:src="@drawable/ic_heart_white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:tint="@color/colorLightRed" />
+            app:tint="@color/colorRed" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -189,7 +184,7 @@
             android:id="@+id/tvCategoriesDetailName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/car_name_categories_detail"
+            android:text="@string/watch_name_categories_detail"
             android:textAlignment="center"
             android:textColor="@android:color/background_dark"
             android:textSize="12sp" />
