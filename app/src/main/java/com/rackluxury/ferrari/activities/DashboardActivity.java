@@ -68,7 +68,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
         peopleOnline = findViewById(R.id.peopleNumDashboard);
 
-        Random randomOnline = new Random();das
+        Random randomOnline = new Random();
         int valOnline = randomOnline.nextInt(100000);
         peopleOnline.setText(Integer.toString(valOnline));
         setViews();

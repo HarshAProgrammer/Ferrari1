@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -18,13 +17,10 @@ import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderLayout;
 import com.smarteist.autoimageslider.SliderView;
 
-import java.util.Random;
-
 import uk.co.deanwild.materialshowcaseview.MaterialShowcaseView;
 
 public class CompanyActivity extends AppCompatActivity {
     SliderLayout sliderLayout;
-    private TextView peopleOnline;
     private static final String SHOWCASE_ID = "single company";
 
 
@@ -41,13 +37,9 @@ public class CompanyActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         if(getSupportActionBar() != null){
+            getSupportActionBar().setTitle("Ferrari Inc.");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        peopleOnline = findViewById(R.id.peopleNumCompany);
-
-        Random randomOnline = new Random();
-        int valOnline = randomOnline.nextInt(10000);
-        peopleOnline.setText(Integer.toString(valOnline));
 
 
 

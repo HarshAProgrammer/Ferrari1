@@ -568,11 +568,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         });
     }
 
-    private void Reddit() {
-        Intent openBlogFromMain = new Intent(HomeActivity.this, RedditMainActivity.class);
-        startActivity(openBlogFromMain);
-        Animatoo.animateSwipeRight(HomeActivity.this);
-    }
+
 
     private void homeCheckin() {
         finish();

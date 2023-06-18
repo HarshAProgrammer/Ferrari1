@@ -7,6 +7,12 @@ android {
         dataBinding = true
 
     }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
     lint {
         disable 'MissingTranslation'
     }

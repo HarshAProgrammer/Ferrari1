@@ -3,9 +3,6 @@ package com.rackluxury.ferrari.facts;
 import android.animation.ArgbEvaluator;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.TextView;
-import java.util.Random;
-
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -25,8 +22,6 @@ public class FactsActivity extends AppCompatActivity {
     ViewPager viewPagerFacts;
     AdapterFacts adapterFacts;
     List<Model> models;
-    private TextView peopleOnline;
-
 
 
     final ArgbEvaluator argbEvaluator = new ArgbEvaluator();
@@ -42,14 +37,10 @@ public class FactsActivity extends AppCompatActivity {
 
         setSupportActionBar(toolbar);
         if(getSupportActionBar() != null){
-
+            getSupportActionBar().setTitle("Facts About Us");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
-        peopleOnline = findViewById(R.id.peopleNumFacts);
 
-        Random randomOnline = new Random();
-        int valOnline = randomOnline.nextInt(10000);
-        peopleOnline.setText(Integer.toString(valOnline));
 
         factsMain();
 

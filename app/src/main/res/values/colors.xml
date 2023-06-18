@@ -5,12 +5,15 @@
 
     <color name="colorBlack">#000000</color>
     <color name="colorWhite">#FFFFFF</color>
+    <color name="colorLightRed">#F32003</color>
+    <color name="colorGreen">#A40203</color>
     <color name="colorRed">#F32003</color>
-    <color name="colorGreen">#12784A</color>
     <color name="colorGrey">#999999</color>
     <color name="colorPurple">#5025D1</color>
     <color name="colorYellow">#FEC537</color>
     <color name="fcmNotificationColor">#12784A</color>
+
+    <color name="colorFavourite">#12784A</color>
 
     <color name="gradient_start_color">#4c84ff</color>
     <color name="gradient_end_color">#18a3fe</color>
@@ -42,12 +45,29 @@
 
 
 
-    <color name="colorFacts2">#CBCC8160</color>
-    <color name="colorFacts3">#0C4A81</color>
+    <color name="colorFacts1">#F0EBB8</color>
+    <color name="colorFacts2">#C01908</color>
+    <color name="colorFacts3">#A22F02</color>
+    <color name="colorFacts4">#DA4236</color>
+    <color name="colorFacts5">#E05A5E</color>
+    <color name="colorFacts6">#F93844</color>
+    <color name="colorFacts7">#910000</color>
+    <color name="colorFacts8">#FFF357</color>
+    <color name="colorFacts9">#C60D05</color>
+    <color name="colorFacts10">#997905</color>
 
-    <color name="colorRedeem10">#CDCED0</color>
-    <color name="colorRedeem11">#6E4557</color>
-    <color name="colorRedeem12">#ECE6E6</color>
+    <color name="colorRedeem01">#E61E20</color>
+    <color name="colorRedeem02">#E08083</color>
+    <color name="colorRedeem03">#8F2544</color>
+    <color name="colorRedeem04">#771F1A</color>
+    <color name="colorRedeem05">#F93040</color>
+    <color name="colorRedeem06">#B51832</color>
+    <color name="colorRedeem07">#E9102A</color>
+    <color name="colorRedeem08">#E00E2C</color>
+    <color name="colorRedeem09">#375570</color>
+    <color name="colorRedeem10">#99918B</color>
+    <color name="colorRedeem11">#2E3339</color>
+    <color name="colorRedeem12">#2F2E35</color>
 
 
     <color name="colorIntro1">#E4E2DF</color>
@@ -65,6 +85,13 @@
     <color name="color_text_pdf">#F27D59</color>
     <color name="color_qr_pdf">#A58FFD</color>
     <color name="color_excel_pdf">#6298EC</color>
+
+    <color name="transparentActionBarAndExoPlayerControllerColor">#88000000</color>
+    <color name="backgroundColor">#FFFFFF</color>
+    <color name="playButtonBackgroundColor">#000000</color>
+    <color name="primaryTextColor">#000000</color>
+    <color name="settingsSubtitleColor">#42000000</color>
+    <color name="dividerColor">#E0E0E0</color>
 
 
 
