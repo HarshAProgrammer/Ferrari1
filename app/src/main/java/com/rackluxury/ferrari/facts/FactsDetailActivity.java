@@ -319,14 +319,13 @@ public class FactsDetailActivity extends AppCompatActivity implements
         if (item.getItemId() == R.id.save_image_facts) {
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                if (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) ==
-                        PackageManager.PERMISSION_DENIED) {
+                
                     String[] permission = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
                     requestPermissions(permission, PERMISSION_STORAGE_CODE);
 
-                } else {
+
                     downloadImage();
-                }
+
 
             } else {
                 downloadImage();
@@ -379,6 +378,7 @@ public class FactsDetailActivity extends AppCompatActivity implements
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == PERMISSION_STORAGE_CODE) {
             if (grantResults.length > 0 && grantResults[0] ==
                     PackageManager.PERMISSION_GRANTED) {
