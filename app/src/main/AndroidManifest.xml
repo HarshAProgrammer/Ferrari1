@@ -9,13 +9,15 @@
     </queries>
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
     <uses-permission android:name="com.android.vending.BILLING" />
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-    <uses-permission android:name="com.google.android.gms.permission.AD_ID" tools:node="remove"/>
+    <uses-permission
+        android:name="com.google.android.gms.permission.AD_ID"
+        tools:node="remove" />
 
 
     <uses-permission
@@ -45,9 +47,11 @@
         <activity android:name=".activities.BuyCoinsActivity" />
         <activity android:name=".activities.RedeemActivity" />
         <activity android:name=".activities.DailyLoginActivity" />
+
         <service android:name=".blog.BroadcastServiceBlog" />
         <service android:name=".activities.BroadcastServiceExpensive" />
         <service android:name=".video.BroadcastServiceVideo" />
+
         <activity android:name=".activities.LoginActivity" />
         <activity
             android:name=".video.VideoCheckerActivity"
@@ -58,10 +62,11 @@
         <activity
             android:name=".blog.BlogCheckerActivity"
             android:launchMode="singleTop" />
+
         <service
             android:name=".activities.ExpensiveNotificationService"
-            android:permission="com.google.android.c2dm.permission.SEND"
-            android:exported="true">
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECIEVE" />
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -69,8 +74,8 @@
         </service>
         <service
             android:name=".blog.BlogNotificationService"
-            android:permission="com.google.android.c2dm.permission.SEND"
-            android:exported="true">
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECIEVE" />
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -78,8 +83,8 @@
         </service>
         <service
             android:name=".video.VideoNotificationService"
-            android:permission="com.google.android.c2dm.permission.SEND"
-            android:exported="true">
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECIEVE" />
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -87,8 +92,8 @@
         </service>
         <service
             android:name=".activities.DailyNotificationService"
-            android:permission="com.google.android.c2dm.permission.SEND"
-            android:exported="true">
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECIEVE" />
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -110,9 +115,10 @@
             android:resource="@color/fcmNotificationColor" />
 
         <activity android:name=".activities.FavouriteCategoriesActivity" />
-        <activity android:name=".activities.IntroActivity"
-            android:screenOrientation="portrait"
-            android:exported="true">
+        <activity
+            android:name=".activities.IntroActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -122,8 +128,8 @@
         <activity android:name=".activities.FavouriteExpensiveActivity" />
         <activity
             android:name=".activities.LoginOrRegisterActivity"
-            android:screenOrientation="portrait"
-            android:launchMode="singleTop" />
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
         <activity android:name=".activities.RegistrationActivity" />
 
         <activity android:name=".activities.ForgotPassword" />
@@ -181,7 +187,8 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".activities.AppWidgetProvider"
+        <receiver
+            android:name=".activities.AppWidgetProvider"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
