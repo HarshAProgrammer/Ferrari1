@@ -1,8 +1,10 @@
 package com.rackluxury.ferrari.activities;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -13,6 +15,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Patterns;
@@ -25,8 +28,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.blogspot.atifsoftwares.animatoolib.Animatoo;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -56,7 +62,12 @@ public class RegistrationActivity extends AppCompatActivity implements
 
     public static final int SWIPE_THRESHOLD = 100;
     public static final int SWIPE_VELOCITY_THRESHOLD = 100;
-    private static final int PERMISSION_STORAGE_CODE = 1000;
+    String[] required_permission = new String[]{
+            Manifest.permission.READ_MEDIA_IMAGES,
+    };
+
+    boolean is_storage_image_permitted = false;
+    String TAG = "Permission";
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile(
                     "(?=.*[0-9])" +
@@ -176,11 +187,11 @@ public class RegistrationActivity extends AppCompatActivity implements
             @Override
             public void onClick(View view) {
 
-                String[] permission = {Manifest.permission.READ_EXTERNAL_STORAGE};
-                requestPermissions(permission, PERMISSION_STORAGE_CODE);
-
-
-                getProfilePic();
+                if (!allPermissionResultCheck()) {
+                    requestPermissionStorageImages();
+                } else {
+                    getProfilePic();
+                }
 
 
             }
@@ -255,21 +266,63 @@ public class RegistrationActivity extends AppCompatActivity implements
         userEmail.addTextChangedListener(registrationTextWatcher);
         userPassword.addTextChangedListener(registrationTextWatcher);
     }
+    public boolean allPermissionResultCheck() {
+        return is_storage_image_permitted;
+    }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == PERMISSION_STORAGE_CODE) {
-            if (grantResults.length > 0 && grantResults[0] ==
-                    PackageManager.PERMISSION_GRANTED) {
-                getProfilePic();
+    public void requestPermissionStorageImages() {
+        if (ContextCompat.checkSelfPermission(RegistrationActivity.this, required_permission[0]) == PackageManager.PERMISSION_GRANTED) {
+            is_storage_image_permitted = true;
+            getProfilePic();
 
-            } else {
-                Toasty.error(RegistrationActivity.this, "Permission denied...!", Toast.LENGTH_LONG).show();
-
-            }
+        } else {
+            request_permission_launcher_storage_images.launch(required_permission[0]);
         }
     }
+
+    private ActivityResultLauncher<String> request_permission_launcher_storage_images =
+            registerForActivityResult(new ActivityResultContracts.RequestPermission(),
+                    isGranted -> {
+                        if (isGranted) {
+                            is_storage_image_permitted = true;
+                            getProfilePic();
+                        } else {
+                            is_storage_image_permitted = false;
+                            Toasty.error(RegistrationActivity.this, "Permission denied...!", Toast.LENGTH_LONG).show();
+                            sendToSettingDialog();
+
+
+                        }
+                    });
+
+    public void sendToSettingDialog() {
+        new AlertDialog.Builder(RegistrationActivity.this)
+                .setTitle("Alert for Permission")
+                .setMessage("Go to Settings for Permissions")
+                .setPositiveButton("Settings", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent();
+                        intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                        Uri uri = Uri.fromParts("package", getPackageName(), null);
+                        intent.setData(uri);
+                        startActivity(intent);
+                        dialogInterface.dismiss();
+
+                    }
+                })
+                .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+
+                        finish();
+                    }
+                })
+                .show();
+    }
+
+
 
     private void getProfilePic() {
         Intent intent = new Intent();
