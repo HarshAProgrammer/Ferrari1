@@ -10,7 +10,6 @@ import android.graphics.Bitmap;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
@@ -177,20 +176,11 @@ public class RegistrationActivity extends AppCompatActivity implements
             @Override
             public void onClick(View view) {
 
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-
-                        String[] permission = {Manifest.permission.READ_EXTERNAL_STORAGE};
-                        requestPermissions(permission, PERMISSION_STORAGE_CODE);
+                String[] permission = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                requestPermissions(permission, PERMISSION_STORAGE_CODE);
 
 
-                        getProfilePic();
-
-
-                } else {
-                    getProfilePic();
-
-
-                }
+                getProfilePic();
 
 
             }
